@@ -1,0 +1,99 @@
+{% extends "base2.html" %}
+
+{% block title %}
+   Dashboard
+
+{% endblock title %}
+
+{% block css %}
+        <link rel="stylesheet" href="../static/css/books.css">
+
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-9">
+            <h1>Books list</h1>
+            <div class="row1">
+              {% if is_admin%}
+              <a href="{{url_for('addbook')}}" id="add">
+                <button type="button">
+                  Add Book
+                </button> 
+              </a>       
+              {%endif%}
+              <form action="/books" method='POST'>
+              <input id="book_search" name="book_search" type="text" placeholder="Search By Book Title..">
+              <button id="search_icon" type="submit"><img src="../static/images/search_icon.png"></button>
+              </form>
+            </div>
+             <div class="table">
+                  <table>
+                      <tr>
+                        <th>Book<br>ID</th>
+                        <th>Title</th>
+                        <th>Edition</th>
+                        <th class="less_padded">Availablity<br>status</th>
+                        <th>Genres</th>
+                        <th>Author</th>
+                        {%if is_admin%}
+                        <th class="less_padded">Edit</th>
+                        <th class="less_padded">Delete</th>
+                        {%endif%}
+                      </tr>
+                     {% for book in Books %} 
+                      <tr>
+                        <td>{{book.Book_id}}</td>
+                        <td class="book_name">{{book.Title}}</td>
+                        <td>{{book.Edition}}</td>
+                        <td class="less_padded">{{'Available' if book.Available else 'Not Available'}}</td>
+                        
+                        <td style="padding:1px;padding-left:2px">
+                          {%if book.Genre|length<=3 and book.Genre|length!=0 %}
+                            <ul class="genres">
+                            {%for genre in book.Genre%}
+                            <li class="genre_tag">
+                              {{genre}}
+                            </li>
+                            {%endfor%}
+                            </ul>
+                          {%elif book.Genre|length==0%}
+                            N/A
+                          {%else%}
+                            <img src="../static/images/info.png" height="40px" width="40px" onmouseover="Genre_popover({{book.Genre}},this)" onmouseleave="Genre_popover_remove()">
+                          {%endif%}
+                        </td>
+                        <td class="authors">{{Authors}}
+                          <ul class="authors_names">
+                            {% for author in book.Authors%}
+                            <li>{{author}}</li>
+                            {% endfor%}
+                          </ul>
+                        </td>
+                        {% if is_admin%}
+                        <td class="less_padded">
+                            <button class="Edit" onclick="edit_book({{book.Book_id}},{{AllGenre}},{{book.Genre}},{{book.Authors}},'{{book.Title}}',{{book.Edition}},{{book.Available}})">Edit</button>
+                        </td>
+                        <td class="less_padded">
+                          <button class="Delete" onclick="confirm_delete({{book.Book_id}})">Delete</button>
+                        </td>
+                        {%endif%}
+                      </tr>
+                     {% endfor %} 
+                  </table>
+             </div> 
+                
+            
+        </div>
+    </div>
+ </div>
+
+{% endblock body %}
+
+
+
+

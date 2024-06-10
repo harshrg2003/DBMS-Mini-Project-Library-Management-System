@@ -1,0 +1,117 @@
+
+{% extends "base2.html" %}
+
+{% block title %}
+   Dashboard
+
+{% endblock title %}
+
+{% block css %}
+        <style>
+            .content-box{
+               height:100px;
+               margin-right: 20px;
+               margin-bottom: 20px;
+               margin-top: 20px;
+               padding: 10px;
+               border-radius: 5px;
+            }
+            h1{
+               text-align: center;
+            }
+        </style>
+
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+   <div class="row">
+       <div class="col-md-3">
+           <!-- Your existing sidebar menu -->
+           <!-- ... -->
+       </div>
+       <div class="col-md-9">
+           <!-- Adjusted column sizes and added margin -->
+           <h1>Dashboard</h1>
+           <h2>welcome to this website <span id="member_name_on_dashboard"></span></h2>
+                <script>
+                    function getCookie(cname) {
+                        let name = cname + "=";
+                        let decodedCookie = decodeURIComponent(document.cookie);
+                        let ca = decodedCookie.split(';');
+                        for(let i = 0; i <ca.length; i++) {
+                            let c = ca[i];
+                            while (c.charAt(0) == ' ') {
+                                c = c.substring(1);
+                            }
+                            if (c.indexOf(name) == 0) {
+                                return c.substring(name.length, c.length);
+                            }
+                        }
+                        return "";
+                    }
+                    val = getCookie("username");
+                    val = val.slice(1, -1);
+                    console.log(val);
+                                    // Use the fname, mname, and lname variables to display the full name
+                    let fname = "{{ fname }}";
+                    let mname = "{{ mname }}";
+                    let lname = "{{ lname }}";
+
+                    let fullName = fname + mname + lname;
+
+                    username_div = document.getElementById("member_name_on_dashboard");
+                    username_div.innerHTML = fullName;
+                </script>
+           <div class="row">
+               <div class="col-12 col-sm-4 mb-4">
+                   <!-- Added margin-bottom class -->
+                   <div class="content-box bg-primary text-white">
+                       <!-- Content for the first box -->
+                       <h4>Total books</h4>
+                       <p>{{total_books}}</p>
+                   </div>
+               </div>
+               <div class="col-12 col-sm-4 mb-4">
+                   <!-- Added margin-bottom class -->
+                   <div class="content-box bg-success text-white">
+                       <!-- Content for the second box -->
+                       {%if is_admin%}
+                       <h4>Issued Books</h4>
+                       {%else%}
+                       <h4>Borrowed Books</h4>
+                       {%endif%}
+                       <p>{{borrowed_books}}</p>
+                   </div>
+               </div>
+               <div class="col-12 col-sm-4 mb-4">
+                   <!-- Added margin-bottom class -->
+                   <div class="content-box bg-danger text-white">
+                       <!-- Content for the third box -->
+                       <h4>Books Beyond Due Date</h4>
+                       <p>{{beyond_due_date}}</p>
+                   </div>
+               </div>
+               <div class="col-12 col-sm-4 mb-4">
+                  <!-- Added margin-bottom class -->
+                  <div class="content-box bg-warning text-white">
+                      <!-- Content for the fourth box -->
+                      {%if is_admin%}
+                      <h4>Total Users</h4>
+                      <p>{{total_members}}</p>
+                      {%else%}
+                      <h4>Membership Level</h4>
+                      <p>{{membership_level}}</p>
+                      {%endif%}
+                  </div>
+              </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+{% endblock body %}
+
+
+
+

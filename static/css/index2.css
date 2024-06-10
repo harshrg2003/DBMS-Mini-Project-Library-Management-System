@@ -1,0 +1,37 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.sidebar{
+    width:200px;
+    height:100%;
+    position:fixed;
+    background-color: black;
+    padding-top: 20px;
+    position:fixed;
+    margin-left: 3px;
+}
+.sidebar ul{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+.sidebar li{
+    padding:18px;
+    color:white;
+    cursor:pointer;
+}
+.sidebar a{
+    text-decoration: none;
+    color:white;
+}
+.sidebar .sublist{
+    display:none;
+    padding-left:20px;
+}
+.sublist-dropdown::after {
+    content: " \25BC"; /* Unicode character for a downward-pointing triangle */
+    display: inline-block;
+    margin-left: 5px;
+}

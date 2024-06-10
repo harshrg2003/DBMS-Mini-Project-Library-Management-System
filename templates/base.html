@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="../static/css/index.css">
+    {% block css %}
+       
+    {% endblock css %}
+
+    <title>
+        {% block title %}
+           Library management system
+        {% endblock title %}
+
+
+        
+    </title>
+    
+</head>
+<body>
+    <nav id="navbar">
+        <div class="heading">
+            <h1 class="primary-h">Library management system</h1>
+        </div>
+        <ul>
+            <li class="nav-item"><a href="/home">Home</a></li>
+            <li class="nav-item"><a href="/LoginForm">Signup/Signin</a></li>
+            <li class="nav-item"><a href="/admin">Admin Login</a></li>
+            <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+            
+        </ul>
+
+    </nav>
+
+    {% block body %}
+
+    
+    {% endblock body %}
+
+
+</body>
+</html>   

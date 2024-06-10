@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="../static/css/index2.css">
+
+
+     <!-- bootstrap JS -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+    <!-- custom Js link -->
+    <script src="../static/js/script.js"></script>
+    {% block css %}
+       
+    {% endblock css %}
+
+    <title>
+        {% block title %}
+           Library management system
+        {% endblock title %}
+
+
+        
+    </title>
+    
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li> <a href="/dashboard">Dashboard</a></li>
+            <li class="sublist-dropdown"> <a href="#" onclick="togglesublist('sublist1')">Books</a></li>
+            <ul id="sublist1" class="sublist">
+                <li> <a href="/addbook">Add Book</a></li>
+                
+                <li><a href="/books">All Books</a></li>
+                <li> <a href="/issuebook">Issued Book</a></li>
+                <li> <a href="/updatebook">Update Book details</a></li>
+            </ul>
+            <li class="sublist-dropdown"> <a href="#" onclick="togglesublist('sublist2')">Manage Users</a></li>
+            <ul id="sublist2" class="sublist">
+                <li> <a href="/addUser">Add User</a></li>
+                <li> <a href="/users">View Users</a></li>    
+                <li> <a href="/logout">Logout</a></li>
+            </ul>
+            
+
+
+
+        </ul>
+
+    </div>
+
+    {% block body %}
+
+    
+    {% endblock body %}
+
+
+</body>
+</html>   

@@ -1,0 +1,48 @@
+.Borrow{
+    width: 70px;
+    padding:5px;
+    background-color: rgb(70, 252, 109);
+    font-weight: 500;
+    color:rgb(68,70,68);
+    border-radius: 5px;
+    border-color: rgb(150, 150, 150);
+}
+.NoBorrow{
+    width: 70px;
+    padding:5px;
+    background-color: rgb(189, 189, 189);
+    font-weight: 500;
+    color:rgb(68,70,68);
+    border-radius: 5px;
+    border-color: rgb(20, 20, 20);
+}
+.book_name{
+    max-width: 200px;
+}
+.member_name{
+    max-width: 200px;
+}
+.borrow_date{
+    max-width: 200px;
+}
+.Due_date{
+    max-width: 200px;
+}
+.Return{
+    width: 80px;
+    padding:5px;
+    background-color: rgb(192, 74, 255);
+    font-weight: 500;
+    color:rgb(68,70,68);
+    border-radius: 5px;
+    border-color: rgb(20, 20, 20);
+}
+.Days_Left{
+    background-color: #adffda;
+}
+.Return_Today{
+    background-color: #fff197;
+}
+.Overdue{
+    background-color: #ff6060;
+}

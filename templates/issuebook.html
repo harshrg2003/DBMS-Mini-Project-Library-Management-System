@@ -1,0 +1,179 @@
+
+{% extends "base2.html" %}
+
+{% block title %}
+
+{% endblock title %}
+
+{% block css %}
+        <link rel="stylesheet" href="../static/css/books.css">
+        <link rel="stylesheet" href="../static/css/issuebook.css">
+{% endblock css %}
+{% block body %}
+<script src="../static/js/issue_book.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        {%if page_type=="Borrowing"%}
+        <div class="col-md-9">
+            <h1>Borrowed Books</h1>
+             <div class="table">
+                  <table>
+                      <tr>
+                        <th>Book<br>ID</th>
+                        <th>Title</th>
+                        <th>Edition</th>
+                        <th>Genres</th>
+                        <th>Author</th>
+                        <th>Date of <br> Borrowing</th>
+                        <th>Return in</th>
+                      </tr>
+                     {% for book in Borrowed_Books %} 
+                      <tr>
+                        <td>{{book.Book_id}}</td>
+                        <td class="book_name">{{book.Title}}</td>
+                        <td>{{book.Edition}}</td>
+                        
+                        <td style="padding:1px;padding-left:2px">
+                          {%if book.Genre|length<=3 and book.Genre|length!=0 %}
+                            <ul class="genres">
+                            {%for genre in book.Genre%}
+                            <li class="genre_tag">
+                              {{genre}}
+                            </li>
+                            {%endfor%}
+                            </ul>
+                          {%elif book.Genre|length==0%}
+                            N/A
+                          {%else%}
+                            <img src="../static/images/info.png" height="40px" width="40px" onmouseover="Genre_popover({{book.Genre}},this)" onmouseleave="Genre_popover_remove()">
+                          {%endif%}
+                        </td>
+                        <td class="authors">{{Authors}}
+                          <ul class="authors_names">
+                            {% for author in book.Authors%}
+                            <li>{{author}}</li>
+                            {% endfor%}
+                          </ul>
+                        </td>
+                        <td class="Borrow_date">
+                          {{book.Borrow_Date}}
+                        </td>
+                        {%if book.Due>0 %}
+                        <td class="Days_Left">
+                          {{book.Due}} Days Left
+                        </td>
+                        {%elif book.Due==0%}
+                        <td class="Return_Today">
+                          Book Due Today
+                        </td>
+                        {%else%}
+                        <td class="Overdue">
+                          Over due by {{ -1*book.Due}} Days
+                        </td>
+                        {%endif%}                        
+                      </tr>
+                     {% endfor %} 
+                  </table>
+             </div> 
+                
+            
+        </div>
+        
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-9">
+            <h1>Borrow a Book</h1>
+            <form action="/issuebook" method='GET'>
+                <input id="book_search" name="book_search" type="text" placeholder="Search By Book Title..">
+                <button id="search_icon" type="submit"><img src="../static/images/search_icon.png"></button>
+                </form>
+             <div class="table">
+                  <table>
+                      <tr>
+                        <th>Book<br>ID</th>
+                        <th>Title</th>
+                        <th>Edition</th>
+                        <th>Genres</th>
+                        <th>Author</th>
+                        <th class="less_padded">Borrow</th>
+                      </tr>
+                     {% for book in Books %} 
+                      <tr>
+                        <td>{{book.Book_id}}</td>
+                        <td class="book_name">{{book.Title}}</td>
+                        <td>{{book.Edition}}</td>
+                        <td style="padding:1px;padding-left:2px">
+                          {%if book.Genre|length<=3 and book.Genre|length!=0 %}
+                            <ul class="genres">
+                            {%for genre in book.Genre%}
+                            <li class="genre_tag">
+                              {{genre}}
+                            </li>
+                            {%endfor%}
+                            </ul>
+                          {%elif book.Genre|length==0%}
+                            N/A
+                          {%else%}
+                            <img src="../static/images/info.png" height="40px" width="40px" onmouseover="Genre_popover({{book.Genre}},this)" onmouseleave="Genre_popover_remove()">
+                          {%endif%}
+                        </td>
+                        <td class="authors">{{Authors}}
+                          <ul class="authors_names">
+                            {% for author in book.Authors%}
+                            <li>{{author}}</li>
+                            {% endfor%}
+                          </ul>
+                        </td>
+                        <td class="less_padded">
+                            {%if borrowable%}
+                                <button class="Borrow" onclick="Borrow_book({{book.Book_id}},{{Member_id}})">Borrow</button>
+                            {%else%}
+                                <button class="NoBorrow" onclick="alert('exceeded borrow limits')">Borrow</button>
+                            {%endif%}
+                        </td>
+                      </tr>
+                     {% endfor %} 
+                  </table>
+             </div> 
+                
+            
+        </div>
+        {%elif page_type=="Returning"%}
+        <div class="col-md-9">
+            <h1>Return Borrowed Books</h1>
+             <div class="table">
+                  <table>
+                      <tr>
+                        <th>Book<br>ID</th>
+                        <th>Member</th>
+                        <th>Borrowing Date</th>
+                        <th>Return Date</th>
+                        <th class="less_padded">Return <br>Book</th>
+                      </tr>
+                     {% for record in Borrow_books %} 
+                      <tr>
+                        <td class="book_name">{{record.Book}}</td>
+                        <td class="member_name">{{record.Member}}</td>
+                        <td class="borrow_date">{{record.Borrow_Date}}</td>
+                        <td class="Due_date">{{record.Due_Date}}</td>
+                        <td class="less_padded">
+                            <button class="Return" onclick="Return_book({{record.Transaction_id}})">Returned</button>
+                        </td>
+                      </tr>
+                     {% endfor %} 
+                  </table>
+             </div> 
+                
+            
+        </div>
+        {%endif%}
+    </div>
+ </div>
+
+{% endblock body %}
+
+
+
+

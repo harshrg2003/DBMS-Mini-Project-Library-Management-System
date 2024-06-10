@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}
+   AdminLogin
+
+{% endblock title %}
+
+{% block css %}
+
+  <style>
+   .container{
+        margin-top: 110px;
+        transform:translate(72%,7%);
+        width:100%;
+        max-width: 586px;
+        position:relative;
+        height:515px;
+        background-color:rgba(250, 10, 182, 0.8) ;
+        box-sizing: border-box;
+        padding:10px 25px;
+   }
+   .container  h1{
+      text-align:center;
+      font-size:25px;
+
+  }
+  .form-content{
+       width:100%;
+       position:absolute;
+       padding:89px 76px;
+       margin:auto;
+  }
+  form{
+          padding:8px 20px;
+          position:relative;
+          width:100%;
+          display:block;
+          margin-right:35px;
+          
+          /* flex-direction: column; */
+  }
+  .field{
+        width:100%;
+        max-width: 344px;
+        margin:23px 8px;
+        
+  }
+  .field input{
+      width:35%;
+      position:absolute;
+      padding:10px 19px;
+      /* margin:-1px 2px; */
+      border-radius: 20px;
+      border:none;
+      outline: none;
+      font-size: 15px;
+      margin-bottom: 5px;
+  }
+  label{
+   font-size: 25px;
+  }
+  .button{
+     width:100%;
+     max-width: 331px;
+     height:35px;
+     text-align: center;
+     padding:20px;
+  }
+  button{
+      padding:7px;
+      width:173px;
+      border-radius: 20px;
+      border:none;
+      outline:none;
+      font-size: 30px;
+      background-color: rgb(231, 251, 9);
+      color:rgb(255, 89, 0);
+      
+  }
+
+  </style>
+
+   
+{% endblock css %}
+
+{% block body %}
+ <div class="container">
+   <h1>Admin Login </h1>
+   <div class="form-content">
+      <form name="login" action="/admin" method="POST">
+         <div class="field">
+           
+         </div>
+        <div class="field">
+        <label for="ID">Admin-ID:</label>  <input type="text" name="ID" placeholder="Enter ur ID" required=""> <br><br>
+        </div>
+        <div class="field">
+        <label for="password">Password:</label>  <input type="password" name="password" placeholder="Enter ur passsword" required=""> <br><br>
+        </div>
+        <div class="button">
+        <button>Login</button>
+            
+         </div>
+
+      </form>
+   </div>
+
+ </div>
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

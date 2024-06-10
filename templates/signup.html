@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+LoginForm
+
+{% endblock title %}
+
+{% block css %}
+
+<style>
+   .container {
+      margin-top: 110px;
+      transform: translate(72%, 7%);
+      width: 100%;
+      max-width: 586px;
+      position: relative;
+      height: 515px;
+      background-color: rgb(16, 238, 38);
+      box-sizing: border-box;
+      padding: 10px 25px;
+   }
+
+   .container h1 {
+      text-align: center;
+      font-size: 25px;
+
+   }
+
+   .form-content {
+      width: 100%;
+      position: absolute;
+      padding: 89px 76px;
+      margin: auto;
+   }
+
+   form {
+      padding: 8px 20px;
+      position: relative;
+      width: 100%;
+      display: block;
+      margin-right: 35px;
+
+      /* flex-direction: column; */
+   }
+
+   .field {
+      width: 100%;
+      max-width: 344px;
+      margin: 23px 8px;
+
+   }
+
+   .field input {
+      width: 35%;
+      position: absolute;
+      padding: 10px 19px;
+      /* margin:-1px 2px; */
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      margin-bottom: 5px;
+   }
+
+   label {
+      font-size: 25px;
+   }
+
+   .button {
+      width: 100%;
+      max-width: 331px;
+      height: 35px;
+      text-align: center;
+      padding: 20px;
+   }
+
+   button {
+      padding: 7px;
+      width: 173px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 30px;
+      background-color: brown;
+      color: yellow;
+
+   }
+
+   .alert{
+      background-color: yellow;
+      font-size: 100px;
+   }
+
+   #btn1 {
+      padding: 3px;
+      width: 17px;
+      border-radius: 0px;
+      border: none;
+      outline: none;
+      font-size: 30px;
+      background-color: yellow;
+      color: yellow;
+   }
+</style>
+
+
+
+
+
+
+{% endblock css %}
+
+{% block body %}
+
+<div class="container">
+   <h1>Sign up </h1>
+   {% with messages=get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+   {% for category, message in messages %}
+
+   <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+      {{message}}
+
+      
+   </div>
+
+
+   {% endfor %}
+   {% endif %}
+   {% endwith %}
+   <div class="form-content">
+      <form action="/signup" method="POST">
+         <div class="field">
+            <label for="username">Username:</label> <input type="text" name="username" placeholder="Enter ur username"
+               required="">
+         </div>
+         <div class="field">
+            <label for="email">Email-ID:</label> <input type="email" name="email" placeholder="Enter ur Email"
+               required=""> <br><br>
+         </div>
+         <div class="field">
+            <label for="password">Password:</label> <input type="password" name="password"
+               placeholder="Enter ur passsword" required=""> <br><br>
+         </div>
+         <div class="button">
+            <button>Sign up</button>
+            <p>Have an account <a href="/LoginForm">Sign in</a></p>
+         </div>
+
+      </form>
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

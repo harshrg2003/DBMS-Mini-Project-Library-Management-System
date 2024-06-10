@@ -1,0 +1,5 @@
+{
+    "mysql_pass":"harshrg2003",
+    "mysql_url":"mysql://root@localhost:3308/library",
+    "mysql_user":"root"
+}

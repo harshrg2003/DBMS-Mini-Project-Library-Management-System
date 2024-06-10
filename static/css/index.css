@@ -1,0 +1,122 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Times New Roman', Times, serif;
+    /* box-sizing: border-box; */
+}
+body{
+    background-image: linear-gradient(#ffcdcd,#ffffca);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#navbar{
+    position:relative;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+    top:0;
+}
+#navbar ul{
+    display:flex;
+}
+#navbar::before{
+    content:"";
+    background-color: black;
+    position:absolute;
+    height:120%;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    opacity:0.8;
+}
+#navbar ul li{
+    list-style: none;
+    font-size: 1.5rem;
+}
+#navbar ul li a{
+    color:white;
+    display:block;
+    text-decoration: none;
+    padding:6px 10px;
+    margin:4px;
+    
+}
+#navbar ul li a:hover{
+    background-color: antiquewhite;
+    color:black;
+    border-radius: 20px;
+    
+}
+#navbar ul li:hover{
+    font-size: 1.7rem;
+}
+.heading .primary-h{
+    font-size: 1.8rem;
+    margin-left:20px;
+    color:aqua;
+}
+#s-heading{
+    height:200px;
+    /* width:100%; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:103px 22px;
+}
+#s-heading::before{
+    background: url("../images/library.jpg") no-repeat center center/cover;
+    content:" ";
+    position:absolute;
+    top:0;
+    left:0;
+    height:83%;
+    width:100%;
+    z-index: -2;
+    opacity:0.6;
+}
+#s-heading h1{
+    color:brown;
+    font-size: 3.3rem;
+    padding:20px;
+    text-align: center;
+    position:relative;
+    margin-top: 4px;
+}
+.home{
+    height:470px;
+    width:100%;
+    /* max-width: 375px; */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    top:73px;
+    left:3px;
+    /* padding:23px 6px; */
+    margin-top: 10px;
+    
+}
+.home h1{
+    text-align: center;
+    font-size: 3.3rem;
+    color:red;
+    margin-bottom: 10px;
+}
+.home .home-box{
+    position:relative;
+    padding:23px 6px;
+    height:400px;
+    background-color: aqua;
+    margin:auto;
+
+}
+.home .home-box p{
+    font-size: 1.5rem;
+    color:blueviolet;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
